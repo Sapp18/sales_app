@@ -30,7 +30,10 @@ class SignUpProvider extends ChangeNotifier {
   }
 
   void checkEmptyData() {
-    if (data['email'] != '' && data['password'] != '') {
+    if (data['name'] != '' &&
+        data['surname'] != '' &&
+        data['email'] != '' &&
+        data['password'] != '') {
       validateData = true;
     } else {
       validateData = false;

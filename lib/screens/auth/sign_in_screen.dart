@@ -83,7 +83,7 @@ class _SignInScreen extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * .01),
                   CheckboxListTile(
-                    activeColor: ThemeColors.blue1,
+                    activeColor: ThemeColors.purple1,
                     checkColor: ThemeColors.white1,
                     contentPadding: EdgeInsets.zero,
                     title: Text(
@@ -105,7 +105,7 @@ class _SignInScreen extends StatelessWidget {
                         await Future.delayed(
                           const Duration(seconds: 3),
                         ).then(
-                          (value) => Navigator.pushNamed(
+                          (value) => Navigator.pushReplacementNamed(
                             context,
                             AppRoutes.homeScreen,
                           ),

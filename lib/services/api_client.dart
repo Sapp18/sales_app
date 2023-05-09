@@ -8,17 +8,16 @@ class ApiClient {
     ),
   );
 
-  static Future<dynamic> getAPI(String path,
-      {Map<String, dynamic>? data}) async {
+  static Future<List> getAPI(String path, {Map<String, dynamic>? data}) async {
     final resp = await _dio.get(
       path,
       queryParameters: data,
     );
     try {
-      ('Response en getAPI: $resp');
+      'Response en getAPI: $resp';
       return resp.data;
     } catch (e) {
-      ('Error en getAPI $e');
+      'Error en getAPI $e';
       return resp.data;
     }
   }

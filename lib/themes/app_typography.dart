@@ -51,6 +51,30 @@ class AppTypography {
     fontSize: 20,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle text22w400 = GoogleFonts.quicksand(
+    fontSize: 22,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle text22w500 = GoogleFonts.quicksand(
+    fontSize: 22,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle text24w400 = GoogleFonts.quicksand(
+    fontSize: 24,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle text24w500 = GoogleFonts.quicksand(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle text26w400 = GoogleFonts.quicksand(
+    fontSize: 26,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle text26w500 = GoogleFonts.quicksand(
+    fontSize: 26,
+    fontWeight: FontWeight.w500,
+  );
   //Background
   static TextStyle text14w400Background1 = GoogleFonts.quicksand(
     color: ThemeColors.background,

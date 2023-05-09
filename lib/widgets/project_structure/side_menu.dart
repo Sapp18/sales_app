@@ -24,8 +24,16 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.settings_outlined),
-            title: const Text('Settings'),
+            title: const Text('Configuraciones'),
             onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout_rounded),
+            title: const Text('Cerrar sesión'),
+            onTap: () => Navigator.pushReplacementNamed(
+              context,
+              AppRoutes.signInScreen,
+            ),
           ),
         ],
       ),

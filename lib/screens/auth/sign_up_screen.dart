@@ -68,31 +68,31 @@ class _SignUpScreen extends StatelessWidget {
                 InputFieldWidget(
                   data: provider.data,
                   dataProperty: 'name',
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   labelText: 'Nombre(s)',
+                  textCapitalization: TextCapitalization.words,
                   onChanged: () => provider.checkEmptyData(),
                   validator: (value) =>
-                      RegularExpressions().validateEmail(value),
+                      RegularExpressions().validateMinLength(value, 2),
                 ),
                 SizedBox(height: size.height * .02),
                 InputFieldWidget(
                   data: provider.data,
                   dataProperty: 'surname',
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   labelText: 'Primer apellido',
+                  textCapitalization: TextCapitalization.words,
                   onChanged: () => provider.checkEmptyData(),
                   validator: (value) =>
-                      RegularExpressions().validateEmail(value),
+                      RegularExpressions().validateMinLength(value, 2),
                 ),
                 SizedBox(height: size.height * .02),
                 InputFieldWidget(
                   data: provider.data,
                   dataProperty: 'second_surname',
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   labelText: 'Segundo apellido (opcional)',
                   onChanged: () => provider.checkEmptyData(),
-                  validator: (value) =>
-                      RegularExpressions().validateEmail(value),
                 ),
                 SizedBox(height: size.height * .02),
                 InputFieldWidget(

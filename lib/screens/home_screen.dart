@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/providers/providers.dart';
 import 'package:sales_app/routes/routes.dart';
+import 'package:sales_app/screens/screens.dart';
 import 'package:sales_app/themes/themes.dart';
 import 'package:sales_app/widgets/widgets.dart';
 
@@ -52,14 +53,14 @@ class _HomeScreen extends StatelessWidget {
           SizedBox(
             height: size.height * .25,
             child: FutureBuilder(
-              future: provider.getData(),
+              future: provider.getCategories(),
               builder: (_, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CustomCircularProgressWidget();
                 } else {
                   return ListView.builder(
-                    scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data!.length,
+                    scrollDirection: Axis.horizontal,
                     itemBuilder: (_, int i) {
                       return Padding(
                         padding:
@@ -118,6 +119,70 @@ class _HomeScreen extends StatelessWidget {
               'Productos',
               style: AppTypography.text20w500,
             ),
+          ),
+          FutureBuilder(
+            future: provider.getProducts(),
+            builder: (_, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CustomCircularProgressWidget();
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemBuilder: (_, int i) {
+                    return Card(
+                      margin: EdgeInsets.symmetric(vertical: size.height * .01),
+                      color: ThemeColors.onBackground,
+                      child: ListTile(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailsProductScreen(
+                              data: {
+                                'id': snapshot.data![i]['id'],
+                                'title': snapshot.data![i]['title'],
+                                'price': snapshot.data![i]['price'],
+                                'description': snapshot.data![i]['description'],
+                                'categoryName': snapshot.data![i]['category']
+                                    ['name'],
+                                'categoryImage': snapshot.data![i]['category']
+                                    ['image'],
+                                'images': snapshot.data![i]['images'],
+                              },
+                            ),
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: size.height * .015,
+                          horizontal: size.width * .04,
+                        ),
+                        leading: CircleAvatar(
+                          backgroundColor: ThemeColors.onBackground,
+                          backgroundImage: NetworkImage(
+                            snapshot.data![i]['category']['image'],
+                          ),
+                        ),
+                        title: Text(
+                          snapshot.data![i]['title'],
+                          style: AppTypography.text18w500,
+                        ),
+                        subtitle: Text(
+                          snapshot.data![i]['description'],
+                          maxLines: 2,
+                          style: AppTypography.text16w400,
+                        ),
+                        trailing: Text(
+                          '\$${snapshot.data![i]['price'].toString()}',
+                          style: AppTypography.text16w500,
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }
+            },
           ),
         ],
       ),
